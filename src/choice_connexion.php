@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+require_once "vendor/bdd_connexion/connexion_pdo_etu.php";
 require_once "check_connexion.php";
 $num= $_SESSION['user_id'];
 
@@ -11,21 +13,21 @@ $conn = OuvrirConnexionPDO($db, $db_username, $db_password);
 
 if($conn){
     include 'choice.html';
+    if(ifClient($conn, $num)){
+        include 'choice_client.html';
+    }
     if(ifOrga($conn, $num)){
         include 'choice_orga.html';
     }
-    else if(ifClient($conn, $num)){
-        include 'choice_client.html';
-    }
-    else if(ifGuide($conn, $num)){
+    if(ifGuide($conn, $num)){
         include 'choice_guide.html';
     }
-    else{
-        header('Location: connexion.html');
+    else if (!ifClient($conn, $num) && !ifOrga($conn, $num) && !ifGuide($conn, $num)){
+        include 'choice.html';
     }
 }
 else{
-    header('Location: connexion.html');
+    echo "erreur connexion";
 }
 
 

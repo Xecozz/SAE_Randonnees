@@ -2,7 +2,7 @@
 session_start();
 
 require_once "vendor/bdd_connexion/param_connexion_etu.php";
-require_once "vendor/bdd_connexion/connexion_pdo_etu.php";
+require_once "vendor/bdd_connexion/pdo_agile.php";
 echo '<meta charset="utf-8"> ';
 
 $db_username = $db_usernameOracle;
