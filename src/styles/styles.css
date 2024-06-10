@@ -46,7 +46,10 @@ header{
 .box {
     width: 300px;
     padding: 20px;
-    margin: 0 auto;
+    margin-top: 5%;
+    margin-bottom: 20%;
+    margin-left:35%;
+    margin-right: 35%;
     border: 2px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -167,6 +170,16 @@ input[type="text"] {
 button {
     background-color: #DDB97A;
     color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#choice_button{
+    background-color: blue;
+    color: white;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
