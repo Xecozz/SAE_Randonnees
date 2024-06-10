@@ -21,16 +21,7 @@ else
 
 $conn = OuvrirConnexionPDO($db,$db_username,$db_password);
 
-if ($conn)
-{
-    echo ("<hr/> Connexion réussie à la base de données <br/>");
-    $sql = "select * from alp_personne";
-    lireDonnees($conn,$sql );
-    echo "test";
-}
-else
-    echo ("<hr/> Connexion impossible à la base de données <br/>");
-
+//fonction utile
 function insererDonnee($c, $sql)
 {
     afficherObj($sql);
@@ -68,9 +59,46 @@ function afficherObj($obj)
     echo "</PRE>";
 }
 
+//verification connexion
+
+if (isset($_POST['courriel']) && isset($_POST['password'])) {
+    $courriel = $_POST['courriel'];
+    $password = $_POST['password'];
+
+    $sql = "SELECT * FROM alp_personne WHERE per_courriel = '$courriel' and per_mdp = '$password'";
+  
+    echo $sql;
+    if (verify($sql,$conn)== 1) {
+        session_start();
+        $_SESSION['user_id'] = $user['id'];
+        echo "reussi";
+    } else {
+        echo "Mauvais id";
+    }
+}
+
+function verify($sql,$conn){
+    echo "check";
+    $tab = array();
+    LireDonneesPDO1($conn,$sql,$tab);
+    if(empty($tab)){
+        return 0;
+    }
+    return 1;
+}
 
 
+if ($conn)
+{
+    echo ("<hr/> Connexion réussie à la base de données <br/>");
+    
+    afficherObj($_POST);
+}
+else
+    echo ("<hr/> Connexion impossible à la base de données <br/>");
 
+
+ //   
 
 
 ?>
