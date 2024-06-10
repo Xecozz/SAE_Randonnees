@@ -12,48 +12,56 @@
     <img class="bg-img" src="image/959.jpg" class=" d-block mt-3 mb-4" alt="...">
 
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img id = "imageLogo" src="image/logo.png" alt="Logo" width="100" height="40" class="d-inline-block imageLogo">
-                Accueil
-            </a>          
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="randonnee.html">Randonnée</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Informations
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="infoeco.html">Informations économiques</a>
-                  <a class="dropdown-item" href="infoecolo.html">Informations écologiques</a>
-                  <a class="dropdown-item" href="emploi.html">Informations emplois</a>
-                  <a class="dropdown-item" href="#">Statistiques</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Questionnaires
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="questhab.html">Questionnaire Habitant</a>
-                  <a class="dropdown-item" href="questmairie.html">Questionnaire Mairie</a>
-                  <a class="dropdown-item" href="questasso.html">Questionnaire Entreprise / Associations</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="faq.html">FAQ</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="connexion.html">Connexion</a>
-              </li>
-            </ul>
-          </div>
+      <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">
+              <img id = "imageLogo" src="image/logo.png" alt="Logo" width="100" height="40" class="d-inline-block imageLogo">
+              Accueil
+          </a>          
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="randonnee.php">Randonnée</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Informations
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="infoeco.html">Informations économiques</a>
+                <a class="dropdown-item" href="infoecolo.html">Informations écologiques</a>
+                <a class="dropdown-item" href="#">Statistiques</a>
+                
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Questionnaires
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="questhab.html">Questionnaire Habitant</a>
+                <a class="dropdown-item" href="questmairie.html">Questionnaire Mairie</a>
+                <a class="dropdown-item" href="questasso.html">Questionnaire Entreprise / Associations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="faq.html">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <?php
+              session_start();
+              if (isset($_SESSION['user_id'])){
+                echo '<a class="nav-link" href="profil.php">Profil</a>';
+              } else {
+                echo '<a class="nav-link" href="connexion.html">Connexion</a>';
+              }
+              ?>
+            </li>
+          </ul>
+          
         </div>
-      </nav>
+      </div>
+    </nav>
       </header>
 
       <main>
