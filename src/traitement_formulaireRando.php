@@ -41,8 +41,6 @@
 		$niveau = $_POST["niveau"];
 	}
 	
-	// début modifs macéo
-	
 	if (isset($_POST["regionDep"]) && !empty($_POST["regionDep"])) {
 		$regionDep = $_POST["regionDep"];
 	} else {
@@ -147,8 +145,6 @@
 			$erreur = true;
 		}
 	}
-	
-	// fin modifs
 
 	if (empty($_POST["prixPers"]) || $_POST["prixPers"] < 0 ){
 		afficherObj("Veuillez mettre un prix");
