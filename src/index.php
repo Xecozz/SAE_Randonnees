@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -49,7 +52,6 @@
             </li>
             <li class="nav-item">
               <?php
-              session_start();
               if (isset($_SESSION['user_id'])){
                 echo '<a class="nav-link" href="profil.php">Profil</a>';
               } else {
@@ -138,7 +140,5 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="script.js"></script>
-<script src="navbar.js"></script>
 </body>
 </html>

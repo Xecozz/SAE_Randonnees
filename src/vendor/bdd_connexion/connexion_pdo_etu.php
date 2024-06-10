@@ -37,3 +37,5 @@ function afficherObj($obj)
 	print_r($obj);
 	echo "</PRE>";
 }
+
+?>

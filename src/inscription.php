@@ -78,8 +78,11 @@ if($conn){
         $tel = $_POST['tel'];
         $courriel = $_POST['courriel'];
         $insert = "INSERT INTO alp_personne VALUES ($newNum, '$mdp', '$nom', '$prenom', '$ville', '$tel', '$courriel')";
-        echo($insert);
         insererDonnee($conn,$insert);
+        $insertClient = "INSERT INTO alp_client VALUES ($newNum, 0,0, sysdate)";
+        insererDonnee($conn,$insertClient);
+
+        header('Location: index.php');
     
     }
 }

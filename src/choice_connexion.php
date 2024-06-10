@@ -1,34 +1,14 @@
 <?php
-session_start();
-
 require_once "vendor/bdd_connexion/connexion_pdo_etu.php";
 require_once "check_connexion.php";
 $num= $_SESSION['user_id'];
+
 
 $db_username = $db_usernameOracle;
 $db_password = $db_passwordOracle;
 $db = $dbOracle;
 
 $conn = OuvrirConnexionPDO($db, $db_username, $db_password);
-
-if($conn){
-    include 'connexionChoice/choice.html';
-    if(ifClient($conn, $num)){
-        include 'connexionChoice/choice_client.html';
-    }
-    if(ifOrga($conn, $num)){
-        include 'connexionChoice/choice_orga.html';
-    }
-    if(ifGuide($conn, $num)){
-        include 'connexionChoice/choice_guide.html';
-    }
-    else if (!ifClient($conn, $num) && !ifOrga($conn, $num) && !ifGuide($conn, $num)){
-        header('Location: connexion.html');
-    }
-}
-else{
-    echo "erreur connexion";
-}
 
 
 //fonction pour verifier si la personne est organisateur ou client ou guide
@@ -63,9 +43,24 @@ function ifGuide($conn, $num)
     return true;
 }
 
-
-
-
-
+if($conn){
+    include 'connexionChoice/choice.html';
+    if(ifClient($conn, $num)){
+        include 'connexionChoice/choice_client.html';
+    }
+    if(ifOrga($conn, $num)){
+        include 'connexionChoice/choice_orga.html';
+    }
+    if(ifGuide($conn, $num)){
+        include 'connexionChoice/choice_guide.html';
+    }
+    else if (!ifClient($conn, $num) && !ifOrga($conn, $num) && !ifGuide($conn, $num)){
+        header('Location: connexion.html');
+    }
+}
+else{
+    echo "erreur connexion";
+}
 
 ?>
+

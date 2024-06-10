@@ -36,7 +36,7 @@ if ($conn) {
 
             $_SESSION['user_id'] = $num;
 
-            header('Location: choice_connexion.php');
+            header('Location: confirmationLogin.html');
         } else {
             header('Location: connexion.html');
         }

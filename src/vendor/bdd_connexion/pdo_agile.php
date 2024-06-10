@@ -1,4 +1,4 @@
-﻿<?php
+﻿﻿<?php
 	// E.Porcq : TP2 PHP Exo1, Exo2, Exo3
 	// préparation SAE 2.456 : Fonctions permettant d'utiliser PDO
 	// pdo_agile.php 11/10/2016
