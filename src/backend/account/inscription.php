@@ -1,30 +1,29 @@
 <?php
-require_once "vendor/bdd_connexion/param_connexion_etu.php";
-require_once "vendor/bdd_connexion/connexion_pdo_etu.php";
-require_once "vendor/bdd_connexion/pdo_agile.php";
+session_start();
+require_once "../vendor/param_connexion.php";
+require_once "../vendor/connexion_pdo.php";
+require_once "../vendor/pdo_agile.php";
 echo '<meta charset="utf-8"> ';
 // décommenter en fonction du serveur de BDD utilisé
 //define ("MOD_BDD","MYSQL");
-define ("MOD_BDD","ORACLE");
+define("MOD_BDD", "ORACLE");
 
-if (MOD_BDD == "MYSQL")
-{
-    $db_username = $db_usernameMySQL;		
+if (MOD_BDD == "MYSQL") {
+    $db_username = $db_usernameMySQL;
     $db_password = $db_passwordMySQL;
     $db = $dbMySQL;
-}
-else
-{
-    $db_username = $db_usernameOracle;		
-    $db_password = $db_passwordOracle;	
+} else {
+    $db_username = $db_usernameOracle;
+    $db_password = $db_passwordOracle;
     $db = $dbOracle;
 }
 
-$conn = OuvrirConnexionPDO($db,$db_username,$db_password);
+$conn = OuvrirConnexionPDO($db, $db_username, $db_password);
 
 
 //verification connexion
-function verifInscription() {
+function verifInscription()
+{
     $valid = true;
 
     if (isset($_POST['inscription'])) {
@@ -39,20 +38,20 @@ function verifInscription() {
         // Vérification des entrées
         if (empty($nom) || empty($prenom) || empty($ville) || empty($tel) || empty($mdp) || empty($confmdp)) {
             $valid = false;
-            echo("Ne pas mettre de valeur vide<br>");
-        } 
+            echo ("Ne pas mettre de valeur vide<br>");
+        }
         if ($mdp != $confmdp) {
             $valid = false;
-            echo("Le mot de passe doit correspondre à la confirmation<br>");
+            echo ("Le mot de passe doit correspondre à la confirmation<br>");
         }
 
         // Vérification du mail
         if (empty($mail)) {
             $valid = false;
-            echo("Le mail ne peut pas être vide<br>");
+            echo ("Le mail ne peut pas être vide<br>");
         } elseif (!preg_match("/^[a-z0-9\-_.]+@[a-z]+\.[a-z]{2,3}$/i", $mail)) {
             $valid = false;
-            echo("Le mail n'est pas valide<br>");
+            echo ("Le mail n'est pas valide<br>");
         }
     }
 
@@ -60,15 +59,15 @@ function verifInscription() {
 }
 
 
-if($conn){
-    if(verifInscription() == true){
+if ($conn) {
+    if (verifInscription() == true) {
         $tab = array();
         $sql = "SELECT MAX(per_num) as max_num FROM alp_personne";
-        LireDonneesPDO1($conn, $sql,$tab);
+        LireDonneesPDO1($conn, $sql, $tab);
         afficherObj($tab);
-    
+
         $maxNum = (int)$tab[0]['MAX_NUM']; // Assurer que l'index est correct
-    
+
         $newNum = $maxNum + 1;
 
         $mdp = $_POST['mdp'];
@@ -78,13 +77,12 @@ if($conn){
         $tel = $_POST['tel'];
         $courriel = $_POST['courriel'];
         $insert = "INSERT INTO alp_personne VALUES ($newNum, '$mdp', '$nom', '$prenom', '$ville', '$tel', '$courriel')";
-        insererDonnee($conn,$insert);
+        insererDonnee($conn, $insert);
         $insertClient = "INSERT INTO alp_client VALUES ($newNum, 0,0, sysdate)";
-        insererDonnee($conn,$insertClient);
+        insererDonnee($conn, $insertClient);
 
-        header('Location: index.php');
-    
+        $_SESSION['user_id'] = $newNum;
+
+        header('Location: ../../confirmationInscription.html');
     }
 }
-
-?>

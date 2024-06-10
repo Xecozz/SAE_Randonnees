@@ -1,9 +1,9 @@
 <?php
-require_once "check_connexion.php";
-require_once "vendor/bdd_connexion/fonctions.php";
-require_once "vendor/bdd_connexion/param_connexion_etu.php";
-require_once "vendor/bdd_connexion/pdo_agile.php";
-require_once "vendor/bdd_connexion/connexion_pdo_etu.php";
+require_once "../vendor/check_connexion.php";
+require_once "../vendor/fonctions.php";
+require_once "../vendor/param_connexion.php";
+require_once "../vendor/pdo_agile.php";
+require_once "../vendor/connexion_pdo.php";
 $conn = OuvrirConnexionPDO($db, $db_username, $db_password);
 
 if ($conn) {
@@ -17,9 +17,6 @@ if ($conn) {
 
     corrigerDonnees($conn, $sql);
 
-    header('Location: edit.php');
-
-}
-else
+    header('Location: ../../profil.php');
+} else
     echo ("<hr/> Connexion impossible à la base de données <br/>");
-?>

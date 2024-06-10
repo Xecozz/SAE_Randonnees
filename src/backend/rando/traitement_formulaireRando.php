@@ -1,17 +1,28 @@
 <?php
-echo "test";
+
+
+function afficherObj($obj)
+{
+	echo "<PRE>";
+	print_r($obj);
+	echo "</PRE>";
+}
+
+
 require_once "../vendor/check_connexion.php";
-echo "test2";
-require_once "../vendor/pdo_agile.php";
-echo "test3";
-require_once "../vendor/param_connexion.php";
-echo "test4";
+
+include_once "../vendor/pdo_agile.php";
+include_once "../vendor/param_connexion.php";
+echo '<meta charset="utf-8"> ';
+
+
+$db_username = $db_usernameOracle;
+$db_password = $db_passwordOracle;
+$db = $dbOracle;
+
 
 $conn = OuvrirConnexionPDO($db, $db_username, $db_password);
 
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
 
 
 $erreur = false;
@@ -23,6 +34,7 @@ if (empty($_POST["nomRando"])) {
 } else {
 	$nomRando = $_POST["nomRando"];
 }
+
 if (empty($_POST["niveau"]) || $_POST["niveau"] <= 0 || $_POST["niveau"] > 6) {
 	afficherObj("Merci de rentrée un niveau valide");
 	$erreur = true;

@@ -1,6 +1,6 @@
 <?php
 require_once "pdo_agile.php";
-require_once "param_connexion_etu.php";
+require_once "param_connexion.php";
 echo '<meta charset="utf-8"> ';
 //fonction utile
 function insererDonnee($c, $sql)
@@ -37,5 +37,3 @@ function afficherObj($obj)
 	print_r($obj);
 	echo "</PRE>";
 }
-
-?>

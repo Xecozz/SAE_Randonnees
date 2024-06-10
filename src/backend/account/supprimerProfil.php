@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once "check_connexion.php";
-require_once "vendor/bdd_connexion/fonctions.php";
-require_once "vendor/bdd_connexion/param_connexion_etu.php";
-require_once "vendor/bdd_connexion/connexion_pdo_etu.php";
+require_once "../vendor/check_connexion.php";
+require_once "../vendor/fonctions.php";
+require_once "../vendor/param_connexion.php";
+require_once "../vendor/connexion_pdo.php";
 
 $num = $_SESSION['user_id'];
 
@@ -29,11 +29,8 @@ if ($conn) {
     $sql = "delete from alp_personne where per_num = $num";
     corrigerDonnees($conn, $sql);
 
-    header('Location: index.php');
+    header('Location: ../../index.php');
     session_destroy();
-
 } else {
     echo "erreur connexion";
 }
-
-?>

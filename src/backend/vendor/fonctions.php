@@ -1,5 +1,5 @@
 <?php
-require_once "vendor/bdd_connexion/pdo_agile.php";
+require_once "pdo_agile.php";
 
 function ifOrga($conn, $num)
 {
@@ -55,5 +55,3 @@ function getGuide($conn, $num)
     LireDonneesPDO1($conn, $sql, $tab);
     return $tab[0];
 }
-
-?>

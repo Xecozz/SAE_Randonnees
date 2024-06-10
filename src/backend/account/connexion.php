@@ -1,8 +1,7 @@
 <?php
 session_start();
-
-require_once "vendor/bdd_connexion/param_connexion_etu.php";
-require_once "vendor/bdd_connexion/pdo_agile.php";
+require_once "../vendor/param_connexion.php";
+require_once "../vendor/pdo_agile.php";
 echo '<meta charset="utf-8"> ';
 
 $db_username = $db_usernameOracle;
@@ -36,11 +35,10 @@ if ($conn) {
 
             $_SESSION['user_id'] = $num;
 
-            header('Location: confirmationLogin.html');
+            header('Location: ../../confirmationLogin.html');
         } else {
-            header('Location: connexion.html');
+            header('Location: ../../connexion.html');
         }
     }
 } else
     echo ("<hr/> Connexion impossible à la base de données <br/>");
-?>

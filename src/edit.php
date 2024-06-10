@@ -1,8 +1,8 @@
 <?php
-require_once "check_connexion.php";
-require_once "vendor/bdd_connexion/fonctions.php";
-require_once "vendor/bdd_connexion/param_connexion_etu.php";
-require_once "vendor/bdd_connexion/pdo_agile.php";
+require_once "backend/vendor/check_connexion.php";
+require_once "backend/vendor/fonctions.php";
+require_once "backend/vendor/param_connexion.php";
+require_once "backend/vendor/pdo_agile.php";
 $conn = OuvrirConnexionPDO($db, $db_username, $db_password);
 
 $tab = getPersonne($conn, $_SESSION['user_id']);
@@ -87,14 +87,14 @@ $tab = getPersonne($conn, $_SESSION['user_id']);
                     <?php
 
                     echo '<h4>' . $tab['PER_PRENOM'] . ' ' . $tab['PER_NOM'] . '</h4>';
-                    if (ifOrga($conn, $_SESSION['user_id'])){
-                    echo '<button class="btn btn-outline-primary m-2">Organisateur</button>';
+                    if (ifOrga($conn, $_SESSION['user_id'])) {
+                      echo '<button class="btn btn-outline-primary m-2">Organisateur</button>';
                     }
-                    if (ifClient($conn, $_SESSION['user_id'])){
-                    echo '<button class="btn btn-outline-primary m-2">Randonneur</button>';
+                    if (ifClient($conn, $_SESSION['user_id'])) {
+                      echo '<button class="btn btn-outline-primary m-2">Randonneur</button>';
                     }
-                    if (ifGuide($conn, $_SESSION['user_id'])){
-                    echo '<button class="btn btn-outline-primary m-2">Guide</button>';
+                    if (ifGuide($conn, $_SESSION['user_id'])) {
+                      echo '<button class="btn btn-outline-primary m-2">Guide</button>';
                     }
                     ?>
                   </div>
@@ -102,8 +102,8 @@ $tab = getPersonne($conn, $_SESSION['user_id']);
               </div>
             </div>
           </div>
-          
-          <form class="col-lg-8 m-0" action="editForm.php" method="post">
+
+          <form class="col-lg-8 m-0" action="backend/account/editForm.php" method="post">
             <div class="card">
               <div class="card-body">
                 <div class="row mb-3">

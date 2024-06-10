@@ -25,6 +25,28 @@
             <li class="nav-item">
               <a class="nav-link" href="randonnee.php">Randonnée</a>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Informations
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="infoeco.html">Informations économiques</a>
+                <a class="dropdown-item" href="infoecolo.html">Informations écologiques</a>
+                <a class="dropdown-item" href="#">Statistiques</a>
+
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Questionnaires
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="questhab.html">Questionnaire Habitant</a>
+                <a class="dropdown-item" href="questmairie.html">Questionnaire Mairie</a>
+                <a class="dropdown-item" href="questasso.html">Questionnaire Entreprise / Associations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="faq.html">FAQ</a>
+            </li>
             <li class="nav-item">
               <?php
               session_start();
@@ -44,17 +66,19 @@
 
   <main>
     <h2 class="my-5 text-center">Rechercher une randonnée</h2>
-    <a class="navbar-brand" href="formulaireRando.php">
-      <button class="btn btn-outline-primary m-2">Créer une randonnée</button>
-    </a>
     <form id="searchbar" class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="nom">
       <button class="btn btn-outline-success" type="submit">Chercher</button>
     </form>
     <?php
     header('Content-Type: text/html; charset=utf-8');
-    include_once "backend/vendor/pdo_agile.php";
-    include_once "backend/vendor/param_connexion.php";
+    require_once "backend/vendor/pdo_agile.php";
+    require_once "backend/vendor/param_connexion.php";
+    define("MOD_BDD", "ORACLE");
+
+    $db_username = $db_usernameOracle;
+    $db_password = $db_passwordOracle;
+    $db = $dbOracle;
 
     $conn = OuvrirConnexionPDO($db, $db_username, $db_password);
 
@@ -65,7 +89,7 @@
 
     function lireDonnees($c)
     {
-      $sql = "select niv_code,per_num_guide,per_num_orga,ran_nom,ran_date_d,ran_date_fin,res_prix_pers,res_sup_solo,res_descriptif from alp_randonnee";
+      $sql = "select * from alp_randonnee where upper(ran_nom) like upper('%$_GET[nom]%')";
       $tab = array();
       $donnee = LireDonneesPDO1($c, $sql, $tab);
       $tab2 = array();
@@ -77,11 +101,11 @@
           $cpt++;
         }
         echo '
-                <h3>' . $tab2[3] . '</h3>
-                <p>Date de début : ' . $tab2[4] . '</p>
-                <p>Date de fin : ' . $tab2[5] . '</p>
-                <p>Prix : ' . $tab2[6] . ' €</p>
-                <p>Description : ' . $tab2[8] . '</p>';
+                <h3>' . $tab2[4] . '</h3>
+                <p>Date de début : ' . $tab2[5] . '</p>
+                <p>Date de fin : ' . $tab2[6] . '</p>
+                <p>Prix : ' . $tab2[7] . ' €</p>
+                <p>Description : ' . $tab2[9] . '</p>';
 
 
 
@@ -94,6 +118,7 @@
       return $donnee;
     }
 
+    ?>
     ?>
   </main>
 

@@ -1,7 +1,7 @@
 <?php
-require_once "vendor/bdd_connexion/connexion_pdo_etu.php";
-require_once "check_connexion.php";
-$num= $_SESSION['user_id'];
+require_once "../vendor/connexion_pdo.php";
+require_once "../vendor/check_connexion.php";
+$num = $_SESSION['user_id'];
 
 
 $db_username = $db_usernameOracle;
@@ -43,24 +43,19 @@ function ifGuide($conn, $num)
     return true;
 }
 
-if($conn){
+if ($conn) {
     include 'connexionChoice/choice.html';
-    if(ifClient($conn, $num)){
+    if (ifClient($conn, $num)) {
         include 'connexionChoice/choice_client.html';
     }
-    if(ifOrga($conn, $num)){
+    if (ifOrga($conn, $num)) {
         include 'connexionChoice/choice_orga.html';
     }
-    if(ifGuide($conn, $num)){
+    if (ifGuide($conn, $num)) {
         include 'connexionChoice/choice_guide.html';
+    } else if (!ifClient($conn, $num) && !ifOrga($conn, $num) && !ifGuide($conn, $num)) {
+        header('Location: ../../connexion.html');
     }
-    else if (!ifClient($conn, $num) && !ifOrga($conn, $num) && !ifGuide($conn, $num)){
-        header('Location: connexion.html');
-    }
-}
-else{
+} else {
     echo "erreur connexion";
 }
-
-?>
-
