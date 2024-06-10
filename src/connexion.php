@@ -72,12 +72,29 @@ if (isset($_POST['courriel']) && isset($_POST['password'])) {
         session_start();
         $_SESSION['user_id'] = $user['id'];
         echo "reussi";
+        if(){
+
+        }
+        if(){
+
+
+        }
     } else {
         echo "Mauvais id";
     }
 }
 
 function verify($sql,$conn){
+    echo "check";
+    $tab = array();
+    LireDonneesPDO1($conn,$sql,$tab);
+    if(empty($tab)){
+        return 0;
+    }
+    return 1;
+}
+
+function IfOrga($sql,$conn){
     echo "check";
     $tab = array();
     LireDonneesPDO1($conn,$sql,$tab);
