@@ -12,15 +12,15 @@ $db = $dbOracle;
 $conn = OuvrirConnexionPDO($db, $db_username, $db_password);
 
 if($conn){
-    include 'vendor/connexionChoice/choice.html';
+    include 'connexionChoice/choice.html';
     if(ifClient($conn, $num)){
-        include 'vendor/connexionChoice/choice_client.html';
+        include 'connexionChoice/choice_client.html';
     }
     if(ifOrga($conn, $num)){
-        include 'vendor/connexionChoice/choice_orga.html';
+        include 'connexionChoice/choice_orga.html';
     }
     if(ifGuide($conn, $num)){
-        include 'vendor/connexionChoice/choice_guide.html';
+        include 'connexionChoice/choice_guide.html';
     }
     else if (!ifClient($conn, $num) && !ifOrga($conn, $num) && !ifGuide($conn, $num)){
         header('Location: connexion.html');
