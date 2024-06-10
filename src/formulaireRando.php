@@ -108,6 +108,7 @@
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Station de fin *</label>
             <input type="text" class="form-control" id="exampleInputText1" required>
+            
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Date de fin *</label>

@@ -1,29 +1,12 @@
 <?php
-
-
-	function afficherObj($obj)
-	{
-		echo "<PRE>";
-		print_r($obj);
-		echo "</PRE>";
-	}
-
 	
 	require_once "check_connexion.php";
-
-	include_once "vendor/bdd_connexion/pdo_agile.php";
-	include_once "vendor/bdd_connexion/param_connexion_etu.php";
+	require_once "vendor/bdd_connexion/pdo_agile.php";
+	require_once "vendor/bdd_connexion/param_connexion_etu.php";
+	require_once "vendor/bdd_connexion/connexion_pdo_etu.php";	
 	echo '<meta charset="utf-8"> ';
-	
-	
-	$db_username = $db_usernameOracle;		
-	$db_password = $db_passwordOracle;	
-	$db = $dbOracle;
-	
 
 	$conn = OuvrirConnexionPDO($db,$db_username,$db_password);
-
-
 
 	$erreur = false;
 	
