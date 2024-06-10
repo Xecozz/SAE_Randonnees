@@ -12,18 +12,18 @@ $db = $dbOracle;
 $conn = OuvrirConnexionPDO($db, $db_username, $db_password);
 
 if($conn){
-    include 'choice.html';
+    include 'vendor/connexionChoice/choice.html';
     if(ifClient($conn, $num)){
-        include 'choice_client.html';
+        include 'vendor/connexionChoice/choice_client.html';
     }
     if(ifOrga($conn, $num)){
-        include 'choice_orga.html';
+        include 'vendor/connexionChoice/choice_orga.html';
     }
     if(ifGuide($conn, $num)){
-        include 'choice_guide.html';
+        include 'vendor/connexionChoice/choice_guide.html';
     }
     else if (!ifClient($conn, $num) && !ifOrga($conn, $num) && !ifGuide($conn, $num)){
-        include 'choice.html';
+        header('Location: connexion.html');
     }
 }
 else{
