@@ -41,6 +41,34 @@
 		<label for="supUnePers">Supplement personne solo : </label><input type="number" min="0" id="supUnePers" name="supUnePers" size="20" value=""><br />
 
 		<label for="descriptif">Descriptif </label><textarea name="descriptif" cols="50" rows="5"></textarea><br />
+
+		<table id="tab">
+			<thead>
+				<tr>
+					<th scope="col">Station</th>
+					<th scope="col">Region</th>
+					<th scope="col">Date de passage</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+				  <th><input type="text" id="station1" name="station1" size="20" value=""></th>
+				  <td><input type="text" id="region1" name="region1" size="20" value=""></td>
+				  <td><input type="date" id="date1" name="date1" size="20" value=""></td>
+				</tr>
+				<tr>
+					<th><input type="text" id="station2" name="station2" size="20" value=""></th>
+				  	<td><input type="text" id="region2" name="region2" size="20" value=""></td>
+				 	 <td><input type="date" id="date2" name="date2" size="20" value=""></td>
+				  </tr>
+				  <tr>
+					<th><input type="text" id="station3" name="station3" size="20" value=""></th>
+				  	<td><input type="text" id="region3" name="region3" size="20" value=""></td>
+				  	<td><input type="date" id="date3" name="date3" size="20" value=""></td>
+				  </tr>
+			  </tbody>
+
+		</table>
 		
 
         <br/>   
@@ -50,6 +78,8 @@
         <br />
       <br />
 	</form>
+
+	<script src="script/script.js"></script>
   </body>
 </html>
 

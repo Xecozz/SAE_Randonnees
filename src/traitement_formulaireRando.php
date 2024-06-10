@@ -8,7 +8,9 @@
 		echo "</PRE>";
 	}
 
-	
+afficherObj($_POST);
+
+	/*
 	require_once "check_connexion.php";
 
 	include_once "vendor/bdd_connexion/pdo_agile.php";
@@ -226,5 +228,5 @@
 		
 		
 	}
-
+*/
 ?>
