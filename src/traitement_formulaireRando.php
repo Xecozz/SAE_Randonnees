@@ -1,5 +1,5 @@
 <?php
-	session_start();
+
 
 	function afficherObj($obj)
 	{
@@ -23,8 +23,7 @@
 
 	$conn = OuvrirConnexionPDO($db,$db_username,$db_password);
 
-	// affichage brut des éléments du formulaire
-	afficherObj($_POST);
+
 
 	$erreur = false;
 	
@@ -210,20 +209,21 @@
 
 	$numOrga = $_SESSION["user_id"];
 	
-
-
-	afficherObj($_SESSION);
 	
 	if (	$erreur == false )
 
 	{	
 		$sql = "INSERT INTO alp_randonnee VALUES ($ran_num,'$niveau','".$num_guide."','".$numOrga."','".$nomRando."',to_date('".$dateDep."','yyyy-mm-dd'),to_date('".$dateFin."','yyyy-mm-dd'),'".$prixPers."','".$supUnePers."','".$description."')";
-		afficherObj($sql);
+		
 		$res = majDonneesPDO($conn,$sql);
 
+
+
+		$res = majDonneesPDO($conn,"INSERT INTO alp_passer VALUES ('$codeStaDep','$ran_num',1,to_date('".$dateDep."','yyyy-mm-dd'))");
+		$res = majDonneesPDO($conn,"INSERT INTO alp_passer VALUES ('$codeStaFin','$ran_num',2,to_date('".$dateFin."','yyyy-mm-dd'))");
 		
-		echo "Résultats de la requête ",$res . "<br/>";
-		afficherObj($res);
+		echo "Votre randonnée a bien été ajoutée <br/>";
+		
 		
 	}
 
