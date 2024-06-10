@@ -21,7 +21,6 @@
 	
 	if ($conn)
 	{
-		echo ("<hr/> Connexion réussie à la base de données <br/>");
 		$table = lireDonnees($conn);
 		afficherObj($table);
 	}
@@ -45,7 +44,7 @@
 			<p class="para">Date de début : '.$tab2[4].'</p>
 			<p class="para">Date de fin : '.$tab2[5].'</p>
 			<p class="para">Prix : '.$tab2[6].' €</p>
-			<p>'.$tab2[8].'</p>
+			<p>Description : '.$tab2[8].'</p>
 			</div>';
 			
 			

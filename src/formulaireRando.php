@@ -63,62 +63,76 @@
       </header>
 
       <main>
-        <h2 class="my-5 text-center">Rechercher une randonnée</h2>
-        <form id = "searchbar" class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button  class="btn btn-outline-success" type="submit">Chercher</button>
-          </form>
-          <?php
-            header('Content-Type: text/html; charset=utf-8');
-            include_once "vendor/bdd_connexion/pdo_agile.php";
-            include_once "vendor/bdd_connexion/param_connexion_etu.php";
-            define ("MOD_BDD","ORACLE");
-            
-            $db_username = $db_usernameOracle;		
-            $db_password = $db_passwordOracle;	
-            $db = $dbOracle;
-            
-            $conn = OuvrirConnexionPDO($db,$db_username,$db_password);
-            
-            if ($conn)
-            {
-              $table = lireDonnees($conn);
-              afficherObj($table);
-            }
-            
-            function lireDonnees($c)
-            {
-              $sql = "select niv_code,per_num_guide,per_num_orga,ran_nom,ran_date_d,ran_date_fin,res_prix_pers,res_sup_solo,res_descriptif from alp_randonnee";
-              $tab =array();
-              $donnee = LireDonneesPDO1($c,$sql, $tab);
-              $tab2=array();
-              $cpt = 0;
-          
-              foreach($tab as $v){
-                foreach($v as $cle=>$a){
-                  $tab2[$cpt]=$a;
-                  $cpt++;
-                }
-                echo '
-                <h3>'.$tab2[3].'</h3>
-                <p>Date de début : '.$tab2[4].'</p>
-                <p>Date de fin : '.$tab2[5].'</p>
-                <p>Prix : '.$tab2[6].' €</p>
-                <p>Description : '.$tab2[8].'</p>';
-                
-                
-                
-                
-                $cpt=0;
-                echo "<br/>";
-              }
-          
-              afficherObj($tab);
-              return $donnee;
-            }
-            
-           ?>
-          ?>
+      
+      <form>
+        <div class="mb-3 mt-3">
+            <label for="exampleInputEmail1" class="form-label">Nom de la randonnée *</label>
+            <input type="text" class="form-control" id="exampleInputText1" aria-describedby="emailHelp" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Niveau de la randonnée *</label>
+            <select name="niveau" size="1">		
+              <option value="1" selected> Découverte</option>
+              <option value="2"> Facile</option>
+              <option value="3"> Moyen</option>
+              <option value="4"> Physique</option>
+              <option value="5"> Sportif</option>
+              <option value="6"> Trekking</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nom du Guide</label>
+            <input type="text" class="form-control" id="exampleInputText1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Prénom du guide</label>
+            <input type="text" class="form-control" id="exampleInputText1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Région de départ</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+    
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Station de départ *</label>
+          <input type="text" class="form-control" id="exampleInputText1" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Date de départ *</label>
+            <input type="date" class="form-control" id="exampleInputPassword1" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Région d'arrivée</label>
+            <input type="text" class="form-control" id="exampleInputText1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Station de fin *</label>
+            <input type="text" class="form-control" id="exampleInputText1" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Date de fin *</label>
+            <input type="date" class="form-control" id="exampleInputText1" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Prix par personne *</label>
+            <input type="number" class="form-control" id="exampleInputText1" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Supplément personne solo *</label>
+            <input type="number" class="form-control" id="exampleInputText1" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Descriptif </label>
+            <input type="text" class="form-control" id="exampleInputText1" required>
+          </div>
+          <input type="submit" name="BtSub" value="Ajouter">
+    </form>
+
+  <!-- troisième groupe de composants-->
+    <input type="submit" name="BtSub" value="Ajouter">
+    <br />
+  <br />
+</form>
       </main>
 
 
