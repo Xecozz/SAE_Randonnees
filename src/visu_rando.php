@@ -45,7 +45,7 @@
 			<p class="para">Date de début : '.$tab2[4].'</p>
 			<p class="para">Date de fin : '.$tab2[5].'</p>
 			<p class="para">Prix : '.$tab2[6].' €</p>
-			<h3>'.$tab2[8].'</h3>
+			<p>'.$tab2[8].'</p>
 			</div>';
 			
 			
