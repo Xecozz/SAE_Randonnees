@@ -46,7 +46,14 @@
                 <a class="nav-link" href="faq.html">FAQ</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="connexion.html">Connexion</a>
+                <?php
+                session_start();
+                if (isset($_SESSION['user_id'])){
+                  echo '<a class="nav-link" href="profil.html">Profil</a>';
+                } else {
+                  echo '<a class="nav-link" href="connexion.html">Connexion</a>';
+                }
+                ?>
               </li>
             </ul>
             
