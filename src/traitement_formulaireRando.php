@@ -10,7 +10,7 @@
 
 afficherObj($_POST);
 
-	/*
+	
 	require_once "check_connexion.php";
 
 	include_once "vendor/bdd_connexion/pdo_agile.php";
@@ -43,8 +43,6 @@ afficherObj($_POST);
 	}else {
 		$niveau = $_POST["niveau"];
 	}
-	
-	// début modifs macéo
 	
 	if (isset($_POST["regionDep"]) && !empty($_POST["regionDep"])) {
 		$regionDep = $_POST["regionDep"];
@@ -157,8 +155,6 @@ afficherObj($_POST);
 			$erreur = true;
 		}
 	}
-	
-	// fin modifs
 
 	if (empty($_POST["prixPers"]) || $_POST["prixPers"] < 0 ){
 		afficherObj("Veuillez mettre un prix");
@@ -228,5 +224,5 @@ afficherObj($_POST);
 		
 		
 	}
-*/
+
 ?>

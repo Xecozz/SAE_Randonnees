@@ -3,9 +3,7 @@ let tab = document.getElementById("tab");
 tab.addEventListener("keydown", event => {
     const tabSize = tab.rows.length;
 
-    // parseInt(event.target.id.match(/\d+/)) + 1
-
-    if (event.target.id !== `station${tabSize - 1}` || tabSize > 20) return;
+    if (event.target.id !== `station${tabSize - 1}` || tabSize > 20 || !/^.$/u.test(event.key)) return;
 
     let ligne = tab.insertRow();
 
