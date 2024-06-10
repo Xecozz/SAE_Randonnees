@@ -217,3 +217,17 @@ button:hover {
 .me-2 {
     margin-right: .5rem!important;
 }
+
+.para {
+    margin-right:70px;
+    margin-left: 10%;
+    text-align: left;
+    font-size:20px;
+}
+
+#searchbar{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left:35%;
+    margin-right: 35%;
+}
