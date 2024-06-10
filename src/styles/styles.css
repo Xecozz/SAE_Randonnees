@@ -1,0 +1,164 @@
+body{
+    height: 500px;
+    overflow-x: hidden;
+}
+
+header{
+    color:white;
+}
+
+
+.bg-img{
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    filter: brightness(0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.navbar{
+    transition: all 0.5s;
+}
+
+.navbar-scrolled{
+    background-color: rgba(0, 0, 0, 0.877);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.014);
+}
+
+.bg-img2{
+    height: 60vh;
+    width: 100vw;
+    object-fit: cover;
+    filter: brightness(0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.image1{
+    height: 200px;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+@font-face {
+    font-family: 'Paris2024';
+    src: url('Paris2024-Variable.ttf') format('truetype');
+}
+
+h1 {
+    padding-top: 300px;
+    padding-bottom: 500px;
+    font-size: 75px;
+    font-family: 'Paris2024', sans-serif;
+}
+
+h2 {
+    padding-top: 50px;
+    padding-bottom: 200px;
+    font-size: 75px;
+    color: #DDB97A;
+    font-family: 'Paris2024', sans-serif;
+}
+
+h3{
+    margin-left:70px;
+    margin-right:60%;
+    font-family: 'Paris2024', sans-serif;
+    font-size: 40px;
+    margin-top:100px;
+    margin-bottom: 40px;
+}
+
+p {
+    margin-right:70px;
+    margin-left: 45%;
+    text-align: left;
+    font-size:20px;
+}
+
+.p2{
+    margin-left:70px;
+    margin-right:59%;
+    font-family: 'Paris2024', sans-serif;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+.p3{
+    text-align: center;
+}
+
+ul{
+    margin-right:70px;
+    margin-left: 50%;
+    text-align: left;
+    font-size:18px;
+}
+
+form{
+    margin-top: 5%;
+    margin-bottom: 20%;
+    margin-left:35%;
+    margin-right: 35%;
+}
+
+#faq-container {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 100px;
+}
+
+#faqList {
+    padding: 20px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    position: relative;
+}
+
+input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #DDB97A;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #DDB97A;
+}
+
+.answer {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.selec{
+    margin-left: 40%;
+    margin-top: 100px;
+}
