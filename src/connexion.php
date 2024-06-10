@@ -43,3 +43,4 @@ if ($conn) {
     }
 } else
     echo ("<hr/> Connexion impossible à la base de données <br/>");
+?>

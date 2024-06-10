@@ -31,6 +31,28 @@ header{
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.014);
 }
 
+.box button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.box button:hover {
+    background-color: #0056b3;
+}
+.box {
+    width: 300px;
+    padding: 20px;
+    margin: 0 auto;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
 .bg-img2{
     height: 60vh;
     width: 100vw;
