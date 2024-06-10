@@ -7,6 +7,9 @@ header{
     color:white;
 }
 
+#imageLogo{
+        filter: invert(95%);
+}
 
 .bg-img{
     height: 100vh;
