@@ -1,28 +1,16 @@
 ﻿<!--  E.Porcq	formulaire.htm 29/05/2022-->
-
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="utf-8">
-    <title>Exemple de formulaire N°4</title>
-	
-	<script>
-	function toutCocher2()
-	{
-	  var item = document.getElementsByName('preference[]');
-	  for (i=0;i<item.length;i++)
-	  {
-		if (item[i].disabled == false)
-			item[i].checked = monFormulaire.tout.checked;
-	  }
-	}
+    <title>Formulaire Nouvelle Randonner</title>
 
-	</script>
   </head>
   <body>
+	
     <form id="monFormulaire" name="monFormulaire" action = "traitement_formulaireRando.php" method="post" enctype="application/x-www-form-urlencoded">
-	<fieldset>
-  	    <legend>Identité</legend>
+	
+  	    
 		<br/>
 		<label for="nom">Nom de la Randonnee : </label><input type="text" id="nomRando" name="nomRando" size="20" value=""><br />
 		
@@ -54,9 +42,9 @@
 		
 
         <br/>   
-	</fieldset>
+	
 	  <!-- troisième groupe de composants-->
-		<input type="submit" name="BtSub" value="Envoyer">
+		<input type="submit" name="BtSub" value="Ajouter">
         <br />
       <br />
 	</form>
