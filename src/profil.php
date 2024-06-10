@@ -134,6 +134,12 @@
               <a class="btn btn-info " target="__blank" href="edit.html">Edit</a>
             </div>
           </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-12">
+              <a class="btn btn-red " target="__blank" href="edit.html">Supprimer</a>
+            </div>
+          </div>
         </div>
       </div>
       </div>
