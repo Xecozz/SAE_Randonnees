@@ -94,6 +94,7 @@
 	afficherObj($donnee);
 	$ran_num = $donnee[0]['MAXI'] + 1;
 
+
 	//verification que le guide existe si il y a
 	if(!empty($_POST["nomGuide"]) && !empty($_POST["prenomGuide"])){
 		$nomGide = $_POST["nomGuide"];
@@ -101,13 +102,18 @@
 		
 		$sql = "select count(*) as nb from ALP_PERSONNE
 		join ALP_GUIDE using(per_num)
-		where upper(per_nom) = upper($nomGide)
-		and upper(per_prenom) = upper($prenomGuide)";
+		where upper(per_nom) = upper('$nomGide')
+		and upper(per_prenom) = upper('$prenomGuide')";
 		LireDonneesPDO2($conn,$sql,$donnee);  
+		
 		afficherObj($donnee);
-		$ran_num = $donnee[0]['MAXI'] + 1;
+		
+		if ($donnee[0]['NB'] == 0){
+			$erreur == true;
+		}
+		
 	}
-	
+	/*
 
 	$_SESSION["per_num"];
 	
