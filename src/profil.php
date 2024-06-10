@@ -21,7 +21,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link" href="Etude_realisee.html">Etude</a>
+                <a class="nav-link" href="randonnee.php">Randonnée</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -49,7 +49,7 @@
                 <?php
                 session_start();
                 if (isset($_SESSION['user_id'])){
-                  echo '<a class="nav-link" href="profil.html">Profil</a>';
+                  echo '<a class="nav-link" href="profil.php">Profil</a>';
                 } else {
                   echo '<a class="nav-link" href="connexion.html">Connexion</a>';
                 }
@@ -64,6 +64,79 @@
 
     <main class="container mt-5">
     <h2 class="my-5 text-center">Profil</h2>
+    <div class="row gutters-sm">
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex flex-column align-items-center text-center">
+              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+              <div class="mt-3">
+                <h4>John Doe</h4>
+                <p class="text-secondary mb-1">Full Stack Developer</p>
+                <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                <button class="btn btn-primary">Follow</button>
+                <button class="btn btn-outline-primary">Message</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="col-md-8">
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Nom</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              Kenneth
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Prénom</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              Valdez
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Email</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              fip@jukmuh.al
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Téléphone</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              (239) 816-9029
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Ville</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              San Francisco
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-12">
+              <a class="btn btn-info " target="__blank" href="edit.html">Edit</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
       </main>
 
 

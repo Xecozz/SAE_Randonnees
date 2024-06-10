@@ -21,7 +21,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link" href="Etude_realisee.html">Etude</a>
+                <a class="nav-link" href="randonnee.php">Randonnée</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -49,7 +49,7 @@
                 <?php
                 session_start();
                 if (isset($_SESSION['user_id'])){
-                  echo '<a class="nav-link" href="profil.html">Profil</a>';
+                  echo '<a class="nav-link" href="profil.php">Profil</a>';
                 } else {
                   echo '<a class="nav-link" href="connexion.html">Connexion</a>';
                 }
