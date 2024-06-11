@@ -1,116 +1,117 @@
 <?php
-
-require_once "vendor/bdd_connexion/check_connexion.php";
-require_once "vendor/bdd_connexion/param_connexion.php";
-require_once "vendor/bdd_connexion/pdo_agile.php";
+require_once "backend/vendor/check_connexion.php";
+require_once "backend/vendor/param_connexion.php";
+require_once "backend/vendor/pdo_agile.php";
 
 $conn = OuvrirConnexionPDO($db, $db_username, $db_password);
-$sql = "SELECT sta_nom, sta_code, reg_nom FROM alp_station
-		join alp_region using(reg_num)
-		order by sta_nom";
+$sql = "SELECT sta_nom FROM alp_station";
 $stationsData = array();
 LireDonneesPDO1($conn, $sql, $stationsData);
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <title>Formulaire Nouvelle Randonner</title>
 
-  </head>
-  <body>
-	
-    <form id="monFormulaire" name="monFormulaire" action = "traitement_formulaireRando.php" method="post" enctype="application/x-www-form-urlencoded">
-	
-  	    
-		<br/>
-		<label for="nom">Nom de la Randonnee : </label><input type="text" id="nomRando" name="nomRando" size="20" value=""><br />
-		
-		<label for="niveau">Niveau de la randonnee : </label> 	
-		
-		<select name="niveau" size="1">		
-	      <option value="1" selected> Découverte</option>
-	      <option value="2"> Facile</option>
-	      <option value="3"> Moyen</option>
-	      <option value="4"> Physique</option>
-		  <option value="5"> Sportif</option>
-		  <option value="6"> Trekking</option>
-        </select><br />
+<head>
+  <title>Etude réalisé</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
 
-		<label for="nomGuide">Nom du Guide : </label><input type="text" id="nomGuide" name="nomGuide" size="20" value="" placeholder="Si nécessaire"><br />
-		<label for="prenomGuide">Prénom du Guide : </label><input type="text" id="prenomGuide" name="prenomGuide" size="20" value="" placeholder="Si nécessaire"><br />
-				
-		<label for="prixPers">Prix par personne : </label><input type="number" min="0" id="prixPers" name="prixPers" size="20" value=""><br />
-		<label for="supUnePers">Supplement personne solo : </label><input type="number" min="0" id="supUnePers" name="supUnePers" size="20" value=""><br />
+<body>
+    <header>
+    <?php
+      include 'navbar.php';
+    ?>
+      </header>
 
-		<label for="descriptif">Descriptif </label><textarea name="descriptif" cols="50" rows="5"></textarea><br />
+      <main>
+      
+      <form id="monFormulaire" name="monFormulaire" action="backend/rando/traitement_formulaireRando.php" method="post" enctype="application/x-www-form-urlencoded">
+      <div class="mb-3 mt-3">
+        <label for="nom" class="form-label">Nom de la randonnée *</label>
+        <input type="text" class="form-control" id="nomRando" name="nomRando" required>
+      </div>
+      <div class="mb-3">
+        <label for="niveau" class="form-label">Niveau de la randonnée *</label>
+        <select name="niveau" size="1">
+          <option value="1" selected> Découverte</option>
+          <option value="2"> Facile</option>
+          <option value="3"> Moyen</option>
+          <option value="4"> Physique</option>
+          <option value="5"> Sportif</option>
+          <option value="6"> Trekking</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="nomGuide" class="form-label">Nom du Guide</label>
+        <input type="text" class="form-control" name="nomGuide" id="nomGuide">
+      </div>
+      <div class="mb-3">
+        <label for="prenomGuide" class="form-label">Prénom du guide</label>
+        <input type="text" class="form-control" id="prenomGuide" name="prenomGuide">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Région de départ</label>
+        <input type="text" class="form-control" id="regionDep" name="regionDep">
+      </div>
+      <div class="mb-3">
+        <label for="stationDep" class="form-label">Station de départ *</label>
+        <select class="form-select" id="stationDep" name="stationDep" required>
+          <option selected>Choissisez une station</option>
+          <?php foreach ($stationsData as $station) : ?>
+            <option value="<?= $station['STA_NOM'] ?>"><?= $station['STA_NOM'] ?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Date de départ *</label>
+        <input type="date" class="form-control" id="dateDep" name="dateDep" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Région d'arrivée</label>
+        <input type="text" class="form-control" id="regionFin" name="regionFin">
+      </div>
+      <div class="mb-3">
+        <label for="stationFin" class="form-label">Station de fin *</label>
+        <select class="form-select" id="stationFin" name="stationFin" required>
+          <option selected>Choissisez une station</option>
+          <?php foreach ($stationsData as $station) : ?>
+            <option value="<?= $station['STA_NOM'] ?>"><?= $station['STA_NOM'] ?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Date de fin *</label>
+        <input type="date" class="form-control" id="dateFin" name="dateFin" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Prix par personne *</label>
+        <input type="number" class="form-control" id="prixPers" name="prixPers" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Supplément personne solo *</label>
+        <input type="number" class="form-control" id="supUnePers" name="supUnePers" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Descriptif </label>
+        <input type="text" class="form-control" name="descriptif">
+      </div>
+      <input type="submit" name="BtSub" value="Ajouter">
+    </form>
+      
 
-		<table id="tab">
-			<thead>
-				<tr>
-					<th scope="col">Station</th>
-					<th scope="col">Date de passage</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-				  <th><select class="form-select" id="station1" name="station1" required>
-          			<option selected>Choissisez une station</option>
-         			 <?php foreach ($stationsData as $station) : ?>
-          				  <option value="<?= $station['STA_CODE'] ?>"><?= $station['STA_NOM']?> (<?= $station['REG_NOM']?>)</option>
-         			 <?php endforeach; ?>
-       			 </select></th>
-				  <td><input type="date" id="date1" name="date1" size="20" value=""></td>
-				</tr>
-				<tr>
-				<th><select class="form-select" id="station2" name="station2" required>
-          			<option selected>Choissisez une station</option>
-         			 <?php foreach ($stationsData as $station) : ?>
-          				  <option value="<?= $station['STA_CODE'] ?>"><?= $station['STA_NOM']?> (<?= $station['REG_NOM']?>)</option>
-         			 <?php endforeach; ?>
-       			 </select></th>
-				  <td><input type="date" id="date2" name="date2" size="20" value=""></td>
-				  </tr>
-				  <tr>
-				  <th><select class="form-select" id="station3" name="station3" required>
-          			<option selected>Choissisez une station</option>
-         			 <?php foreach ($stationsData as $station) : ?>
-          				  <option value="<?= $station['STA_CODE'] ?>"><?= $station['STA_NOM']?> (<?= $station['REG_NOM']?>)</option>
-         			 <?php endforeach; ?>
-       			 </select></th>
-				  <td><input type="date" id="date3" name="date3" size="20" value=""></td>
-				  </tr>
-			  </tbody>
+  <!-- troisième groupe de composants-->
+      </main>
 
-		</table>
-		
 
-        <br/>   
-	
-	  <!-- troisième groupe de composants-->
-		<input type="submit" name="BtSub" value="Ajouter">
-        <br />
-      <br />
-	</form>
+      <footer>
+        <?php 
+          include 'footer.php';
+        ?>
+      </footer>
 
-	<script src="script/script.js"></script>
-  </body>
+</body>
+
 </html>
-
-<!-- 
-la balise form a été complétée avec :
-  name="monFormulaire" : utilisable en php
-  id="monFormulaire" : utilisable en HTML, CSS et Javascript
-  action = "9_2_4_post.php" : fichier php appelé en cas de validation du formulaire
-  method="post"  : les données sont transmises dans le corps de la requête.
-  enctype="application/x-www-form-urlencoded" : classqiue
-
-  On peut utiliser autocomplete="on" pour l'autocomplétion du formulaire
-
-  l'attribut required rend le champ obligatoire
-  l'attribut pattern permet de placer une expression régulière pour un champ
-    on utilise ici un tableau pour les checkbox (et on utilise toutcocher2() 
- -->

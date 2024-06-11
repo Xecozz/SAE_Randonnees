@@ -95,12 +95,20 @@ h2 {
     font-family: 'Paris2024', sans-serif;
 }
 
-h3{
-    margin-left:7%;
-    margin-right:7%;
+.h2-margin {
+    margin-left:70px;
     font-family: 'Paris2024', sans-serif;
     font-size: 40px;
-    margin-top: 10px;
+    margin-top:100px;
+    margin-bottom: 40px;
+}
+
+h3{
+    margin-left:70px;
+    margin-right:60%;
+    font-family: 'Paris2024', sans-serif;
+    font-size: 40px;
+    margin-top:100px;
     margin-bottom: 40px;
 }
 
@@ -175,6 +183,10 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+    display : inline-block;
 }
 
 #choice_button{
@@ -217,15 +229,6 @@ button:hover {
 .me-2 {
     margin-right: .5rem!important;
 }
-#container-rando {
-    background-color: #DCF5CD;
-    box-shadow: 0 0 10px #C7DEBA;
-    border-radius: 2px;
-    overflow: hidden;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-bottom: 100px;
-}
 
 .para {
     margin-right:70px;
@@ -234,3 +237,19 @@ button:hover {
     font-size:20px;
 }
 
+#searchbar{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left:35%;
+    margin-right: 35%;
+}
+
+.center-button {
+    display: flex;
+    justify-content: center;
+}
+
+
+.searchbar-sector {
+    display: none; /* Hide by default */
+}

@@ -1,8 +1,8 @@
 <?php
-require_once "vendor/bdd_connexion/check_connexion.php";
-
-include_once "vendor/bdd_connexion/pdo_agile.php";
-include_once "vendor/bdd_connexion/param_connexion.php";
+	require_once "backend/vendor/check_connexion.php";
+	include_once "backend/vendor/pdo_agile.php";
+	include_once "backend/vendor/param_connexion.php";
+	require_once "backend/vendor/fonctions.php";
 
 	function afficherObj($obj)
 	{
@@ -24,6 +24,10 @@ include_once "vendor/bdd_connexion/param_connexion.php";
 
 	$conn = OuvrirConnexionPDO($db,$db_username,$db_password);
 
+
+	if (ifOrga($conn, $_SESSION['user_id']) == false){
+		header('Location: index.php');
+	}
 
 
 	$erreur = false;
@@ -94,14 +98,14 @@ include_once "vendor/bdd_connexion/param_connexion.php";
 	}
 
 	if (empty($_POST["prixPers"]) || $_POST["prixPers"] < 0 ){
-		afficherObj("Veuillez mettre un prix");
+		afficherObj("Veuillez mettre un prix par personne");
 		$erreur = true;
 	}else {
 		$prixPers = $_POST["prixPers"];
 	}
 
 	if (empty($_POST["supUnePers"])  || $_POST["supUnePers"] < 0  ){
-		afficherObj("Veuillez mettre un prix");
+		afficherObj("Veuillez mettre supplément pour personne seule");
 		$erreur = true;
 	}else {
 		$supUnePers = $_POST["supUnePers"];

@@ -6,4 +6,3 @@ $dbOracle = "oci:dbname=harpagon.unicaen.fr:1521/info.harpagon.unicaen.fr;charse
 $db_username = "agile_6";
 $db_password = "agile_6"; // 
 $db = "oci:dbname=harpagon.unicaen.fr:1521/info.harpagon.unicaen.fr;charset=AL32UTF8";
-?>

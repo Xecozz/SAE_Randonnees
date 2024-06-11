@@ -13,37 +13,37 @@
   <div class="text-center ronded-1 mt-5">
     <a href = "index.html"><img src="image/logo.png" alt="Logo" width="500" height="240" class="d-inline-block imageLogo" ></a>
 </div>
-<form>
+<form method="post" action="backend/account/inscription.php">
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Nom *</label>
-        <input type="text" class="form-control" id="exampleInputText1" aria-describedby="emailHelp" required>
+        <input type="text" class="form-control" id="exampleInputText1" aria-describedby="emailHelp" name ="nom" required>
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Prénom *</label>
-        <input type="text" class="form-control" id="exampleInputText1" aria-describedby="emailHelp" required>
+        <input type="text" class="form-control" id="exampleInputText1" aria-describedby="emailHelp" name ="prenom"required>
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Ville</label>
-        <input type="text" class="form-control" id="exampleInputText1" aria-describedby="emailHelp">
+        <input type="text" class="form-control" id="exampleInputText1" aria-describedby="emailHelp" name ="ville">
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Téléphone</label>
-        <input type="tel" class="form-control" id="exampleInputText1" aria-describedby="emailHelp">
+        <input type="tel" class="form-control" id="exampleInputText1" aria-describedby="emailHelp" name ="tel">
     </div>
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Adresse Mail</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="courriel">
     </div>
 
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Mot de passe *</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" required>
+      <input type="password" class="form-control" id="exampleInputPassword1" name ="mdp" required>
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Confirmer votre mot de passe</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" required>
+        <input type="password" class="form-control" id="exampleInputPassword1" name ="mdpconf" required>
       </div>
-    <button type="submit" class="btn btn-primary">Envoyer</button>
+      <button type="submit" class="btn btn-primary">Envoyer</button>
     <br>
     <label for="exampleInputEmail1" class="form-label">Si vous avez déjà un compte, connectez-vous:</label>
     <br class="mt-2">
