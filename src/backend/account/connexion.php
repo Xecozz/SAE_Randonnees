@@ -24,7 +24,7 @@ if ($conn) {
 
     if (isset($_POST['courriel']) && isset($_POST['password'])) {
         $courriel = $_POST['courriel'];
-        $password = $_POST['password'];
+        $password = md5(trim($_POST['password']));
 
         $sql = "SELECT * FROM alp_personne WHERE per_courriel = '$courriel' and per_mdp = '$password'";
 

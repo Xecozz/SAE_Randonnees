@@ -95,6 +95,14 @@ h2 {
     font-family: 'Paris2024', sans-serif;
 }
 
+.h2-margin {
+    margin-left:70px;
+    font-family: 'Paris2024', sans-serif;
+    font-size: 40px;
+    margin-top:100px;
+    margin-bottom: 40px;
+}
+
 h3{
     margin-left:70px;
     margin-right:60%;
@@ -175,6 +183,10 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+    display : inline-block;
 }
 
 #choice_button{
@@ -230,4 +242,14 @@ button:hover {
     margin-bottom: 100px;
     margin-left:35%;
     margin-right: 35%;
+}
+
+.center-button {
+    display: flex;
+    justify-content: center;
+}
+
+
+.searchbar-sector {
+    display: none; /* Hide by default */
 }

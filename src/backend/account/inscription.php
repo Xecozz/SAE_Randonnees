@@ -58,6 +58,14 @@ function verifInscription()
     return $valid;
 }
 
+function mailExiste($conn,$mail)
+{
+    $sql = "SELECT per_courriel FROM alp_personne WHERE per_courriel = '$mail'";
+    $tab = array();
+    LireDonneesPDO1($conn, $sql, $tab);
+    return count($tab) > 0;
+}
+
 
 if ($conn) {
     if (verifInscription() == true) {
@@ -70,12 +78,18 @@ if ($conn) {
 
         $newNum = $maxNum + 1;
 
-        $mdp = $_POST['mdp'];
+        $mdp = md5(trim($_POST['mdp']));
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
         $ville = $_POST['ville'];
         $tel = $_POST['tel'];
         $courriel = $_POST['courriel'];
+
+        if (mailExiste($conn,trim($courriel))) {
+            echo ("Le mail existe déjà<br>");
+            return;
+        }
+
         $insert = "INSERT INTO alp_personne VALUES ($newNum, '$mdp', '$nom', '$prenom', '$ville', '$tel', '$courriel')";
         insererDonnee($conn, $insert);
         $insertClient = "INSERT INTO alp_client VALUES ($newNum, 0,0, sysdate)";
