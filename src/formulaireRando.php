@@ -1,4 +1,19 @@
-﻿<!--  E.Porcq	formulaire.htm 29/05/2022-->
+<?php
+
+require_once "vendor/bdd_connexion/check_connexion.php";
+require_once "vendor/bdd_connexion/param_connexion.php";
+require_once "vendor/bdd_connexion/pdo_agile.php";
+
+$conn = OuvrirConnexionPDO($db, $db_username, $db_password);
+$sql = "SELECT sta_nom, sta_code, reg_nom FROM alp_station
+		join alp_region using(reg_num)
+		order by sta_nom";
+$stationsData = array();
+LireDonneesPDO1($conn, $sql, $stationsData);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -27,16 +42,7 @@
 
 		<label for="nomGuide">Nom du Guide : </label><input type="text" id="nomGuide" name="nomGuide" size="20" value="" placeholder="Si nécessaire"><br />
 		<label for="prenomGuide">Prénom du Guide : </label><input type="text" id="prenomGuide" name="prenomGuide" size="20" value="" placeholder="Si nécessaire"><br />
-		
-		<label for="regionDep">Région de départ (facultatif) : </label><input type="text" id="regionDep" name="regionDep" size="20" value=""><br />
-		<label for="stationDep">Station de départ : </label><input type="text" id="stationDep" name="stationDep" size="20" value=""><br />
-		<label for="dateDep">Date de depart : </label><input type="date" id="dateDep" name="dateDep" size="20" value=""><br />
-		
-		<label for="regionFin">Région d'arrivée (facultatif) : </label><input type="text" id="regionFin" name="regionFin" size="20" value=""><br />
-		<label for="stationFin">Station de fin : </label><input type="text" id="stationFin" name="stationFin" size="20" value=""><br />
-		<label for="dateFin">Date de fin : </label><input type="date" id="dateFin" name="dateFin" size="20" value=""><br />
-		
-		
+				
 		<label for="prixPers">Prix par personne : </label><input type="number" min="0" id="prixPers" name="prixPers" size="20" value=""><br />
 		<label for="supUnePers">Supplement personne solo : </label><input type="number" min="0" id="supUnePers" name="supUnePers" size="20" value=""><br />
 
@@ -46,25 +52,36 @@
 			<thead>
 				<tr>
 					<th scope="col">Station</th>
-					<th scope="col">Region</th>
 					<th scope="col">Date de passage</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-				  <th><input type="text" id="station1" name="station1" size="20" value=""></th>
-				  <td><input type="text" id="region1" name="region1" size="20" value=""></td>
+				  <th><select class="form-select" id="station1" name="station1" required>
+          			<option selected>Choissisez une station</option>
+         			 <?php foreach ($stationsData as $station) : ?>
+          				  <option value="<?= $station['STA_CODE'] ?>"><?= $station['STA_NOM']?> (<?= $station['REG_NOM']?>)</option>
+         			 <?php endforeach; ?>
+       			 </select></th>
 				  <td><input type="date" id="date1" name="date1" size="20" value=""></td>
 				</tr>
 				<tr>
-					<th><input type="text" id="station2" name="station2" size="20" value=""></th>
-				  	<td><input type="text" id="region2" name="region2" size="20" value=""></td>
-				 	 <td><input type="date" id="date2" name="date2" size="20" value=""></td>
+				<th><select class="form-select" id="station2" name="station2" required>
+          			<option selected>Choissisez une station</option>
+         			 <?php foreach ($stationsData as $station) : ?>
+          				  <option value="<?= $station['STA_CODE'] ?>"><?= $station['STA_NOM']?> (<?= $station['REG_NOM']?>)</option>
+         			 <?php endforeach; ?>
+       			 </select></th>
+				  <td><input type="date" id="date2" name="date2" size="20" value=""></td>
 				  </tr>
 				  <tr>
-					<th><input type="text" id="station3" name="station3" size="20" value=""></th>
-				  	<td><input type="text" id="region3" name="region3" size="20" value=""></td>
-				  	<td><input type="date" id="date3" name="date3" size="20" value=""></td>
+				  <th><select class="form-select" id="station3" name="station3" required>
+          			<option selected>Choissisez une station</option>
+         			 <?php foreach ($stationsData as $station) : ?>
+          				  <option value="<?= $station['STA_CODE'] ?>"><?= $station['STA_NOM']?> (<?= $station['REG_NOM']?>)</option>
+         			 <?php endforeach; ?>
+       			 </select></th>
+				  <td><input type="date" id="date3" name="date3" size="20" value=""></td>
 				  </tr>
 			  </tbody>
 
